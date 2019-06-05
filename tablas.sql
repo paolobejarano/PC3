@@ -17,11 +17,12 @@ CREATE TABLE Servicio (
   ID_servicio int NOT NULL,
   fecha_del_servicio date NOT NULL,
   CONSTRAINT fecha_de_servicio_valida CHECK (fecha_del_servicio > GETDATE()),
-  hora_de_inicio time NOT NULL,
   numero_de_horas int NOT NULL,
-  precio_servicio float NOT NULL,
+  hora_de_inicio time NOT NULL,
+  hora_de_fin AS dateadd(HOUR, numero_de_horas, hora_de_inicio), -- La hora de fin se obtiene de sumar el numero de horas a la hora de inicio
   comision_empresa float NOT NULL,
   pago_a_trabajador float NOT NULL,
+  precio_de_servicio AS comision_empresa + pago_a_trabajador, -- El precio total es un campo calculado
   ID_solicitud int NOT NULL,
   ID_direccion int NOT NULL,
   ID_trabajador int NOT NULL);
@@ -73,7 +74,6 @@ CREATE TABLE Producto (
 CREATE TABLE Producto_por_servicio (
   ID_producto_por_servicio int NOT NULL,
   cantidad int NOT NULL,
-  precio float NOT NULL,
   ID_producto int NOT NULL,
   ID_servicio int NOT NULL);
 
@@ -91,7 +91,7 @@ CREATE TABLE Compra (
 CREATE TABLE Producto_por_compra(
   ID_producto_por_compra int NOT NULL,
   cantidad int NOT NULL,
-  precio_de_venta float NOT NULL,
+  precio float NOT NULL,
   ID_producto int NOT NULL,
   ID_compra int NOT NULL);
 
