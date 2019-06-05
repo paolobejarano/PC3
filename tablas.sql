@@ -21,7 +21,7 @@ CREATE TABLE Servicio (
   hora_de_inicio time NOT NULL,
   hora_de_fin AS dateadd(HOUR, numero_de_horas, hora_de_inicio), -- La hora de fin se obtiene de sumar el numero de horas a la hora de inicio
   comision_empresa float NOT NULL,
-  pago_a_trabajador float NOT NULL,
+  pago_a_trabajador as 5 + 9 * numero_horas, -- El pago al trabajador consiste en un monto fijo que cubre pasajes más un variable que depende de las horas
   precio_de_servicio AS comision_empresa + pago_a_trabajador, -- El precio total es un campo calculado
   ID_solicitud int NOT NULL,
   ID_direccion int NOT NULL,
@@ -68,8 +68,7 @@ CREATE TABLE Producto (
   ID_producto int NOT NULL,
   nombre varchar(250) NOT NULL,
   presentacion varchar(100) NOT NULL,
-  marca varchar(100) NOT NULL,
-  stock_disponible int NOT NULL);
+  marca varchar(100) NOT NULL);
 
 CREATE TABLE Producto_por_servicio (
   ID_producto_por_servicio int NOT NULL,
@@ -85,7 +84,6 @@ CREATE TABLE Proveedor_por_producto(
 CREATE TABLE Compra (
   ID_compra int NOT NULL,
   fecha_de_compra date NOT NULL,
-  precio_de_venta_total float NOT NULL,
   ID_proveedor int NOT NULL);
 
 CREATE TABLE Producto_por_compra(
