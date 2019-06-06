@@ -1,4 +1,3 @@
-
 /* Datos de distritos */
 /* Distrito(ID_distrito, nombre, provincia, region, disponible) */
 INSERT INTO Distrito VALUES(1, 'Lima', 'Lima', 'Lima', 1);
