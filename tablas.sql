@@ -21,8 +21,8 @@ CREATE TABLE Servicio (
   hora_de_inicio time NOT NULL,
   hora_de_fin AS dateadd(HOUR, numero_de_horas, hora_de_inicio), -- La hora de fin se obtiene de sumar el numero de horas a la hora de inicio
   comision_empresa float NOT NULL,
-  pago_a_trabajador as 5 + 9 * numero_horas, -- El pago al trabajador consiste en un monto fijo que cubre pasajes más un variable que depende de las horas
-  precio_de_servicio AS comision_empresa + pago_a_trabajador, -- El precio total es un campo calculado
+  pago_a_trabajador as 5 + 9 * numero_de_horas, -- El pago al trabajador consiste en un monto fijo que cubre pasajes más un variable que depende de las horas
+  precio_de_servicio AS comision_empresa + 5 + 9 * numero_de_horas, -- El precio total es un campo calculado
   ID_solicitud int NOT NULL,
   ID_direccion int NOT NULL,
   ID_trabajador int NOT NULL);
