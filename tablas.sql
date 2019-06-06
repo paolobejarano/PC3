@@ -16,7 +16,7 @@ CREATE TABLE Solicitud (
 CREATE TABLE Servicio (
   ID_servicio int NOT NULL,
   fecha_del_servicio date NOT NULL,
-  CONSTRAINT fecha_de_servicio_valida CHECK (fecha_del_servicio > GETDATE()),
+  --CONSTRAINT fecha_de_servicio_valida CHECK (fecha_del_servicio > GETDATE()),
   numero_de_horas int NOT NULL,
   hora_de_inicio time NOT NULL,
   hora_de_fin AS dateadd(HOUR, numero_de_horas, hora_de_inicio), -- La hora de fin se obtiene de sumar el numero de horas a la hora de inicio
