@@ -67,8 +67,7 @@ CREATE TABLE Direccion (
 CREATE TABLE Producto (
   ID_producto int NOT NULL,
   nombre varchar(250) NOT NULL,
-  presentacion varchar(100) NOT NULL,
-  marca varchar(100) NOT NULL);
+  presentacion varchar(100) NOT NULL);
 
 CREATE TABLE Producto_por_servicio (
   ID_producto_por_servicio int NOT NULL,
